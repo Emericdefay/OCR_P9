@@ -3,5 +3,5 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path("", views.flow, name="flow"),
+    path("", views.ask_review, name="ask_review"),
 ]
