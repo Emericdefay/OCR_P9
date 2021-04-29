@@ -42,8 +42,8 @@ INSTALLED_APPS = [
     'follow.apps.FollowConfig',
     'signin.apps.SigninConfig',
     'posts.apps.PostsConfig',
-    'ask_review.apps.Ask_reviewConfig',
-    'create_review.apps.Create_reviewConfig',
+    'ask_review.apps.AskReviewConfig',
+    'create_review.apps.CreateReviewConfig',
 ]
 
 MIDDLEWARE = [
@@ -112,7 +112,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Paris'
 
 USE_I18N = True
 
@@ -130,3 +130,7 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+LOGIN_REDIRECT_URL = "/flow"
+LOGOUT_REDIRECT_URL = "/login"

@@ -9,7 +9,7 @@
 
             header{
                 background-color: #999999;
-                height: 12vh;
+                height: 120px;
 
             }
             ul.main-menu{
@@ -23,7 +23,7 @@
             }
 
             img{
-                width: 10vh;
+                width: 100px;
                 height: auto;
                 float: left;
                 margin: 20px 20px 0 0;
@@ -46,21 +46,48 @@
                 color:#FFFFFF;
                 font-size: 22px;
             }
+            label{
+                display: block;
+            }
         </style>
     </head>
 
     <body>
         <header>
             {% block main_menu %}
+            {% if user.is_authenticated %}
+            <a href="/flow" class="logo">
+                <img src="https://user.oc-static.com/upload/2020/09/18/16004297044411_P7.png" alt="LITReview"/>
+            </a>
+            {% else %}
             <a href="/" class="logo">
                 <img src="https://user.oc-static.com/upload/2020/09/18/16004297044411_P7.png" alt="LITReview"/>
             </a>
+            {% endif %}
+            {% if user.is_authenticated %}
+                <nav>
+                    <ul class="main-menu">
+                        <li><a href="/flow/"> Flux </a></li>
+                        <li><a href="/posts/"> Posts </a></li>
+                        <li><a href="/follow/"> Abonnements </a></li>
+                        <li><a href="/logout"> Se déconnecter </a></li>
+                        <li><a href="">{{ user }}</a></li>
+                    </ul>
+                </nav>
+            {% endif %}
             {% endblock %}
         </header>
 
-        {% block content %}
-            Nothing
-        {% endblock %}
+        <div class="content">
+        {% if user.is_authenticated %}
+            {% block content %}
+            {% endblock %}
+        {% else %}
+            {% block session %}
+                <p>You have to <a href='/login' style='color:#0989de;'>login</a>.</p>
+            {% endblock session %}
+        {% endif %}
+        </div>
 
     </body>
 </html>

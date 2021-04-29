@@ -1,1 +1,12 @@
-inscription
+{% extends 'base.html' %}
+{% block content %}
+
+<form method="POST" class="form-horizontal">
+    {% csrf_token %}
+    {{ form }}
+    <a href="/login/" class="btn btn-outline-primary">Back</a> 
+    <input type="submit" class="btn btn-primary" value="Submit"/>
+</form>
+
+
+{% endblock %}
