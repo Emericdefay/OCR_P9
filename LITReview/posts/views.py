@@ -23,6 +23,6 @@ def post(request):
             own_tickets = Ticket.objects.filter(user=request.user)
             own_reviews = Review.objects.filter(user=request.user)
             own_data = sorted(chain(own_tickets, own_reviews), key=attrgetter("time_created"), reverse=True)
-            return render(request, "posts/posts.html", {"data": own_data})
+            return render(request, "posts/posts.html", {"data": own_data, "range": range(5)})
     else:
         return render(request, "posts/posts.html")

@@ -34,14 +34,16 @@
                 <div class="p-5">
                     <div class="position-relative">
                         <div class="border border-secondary p-2">
-                            <p>{{ post.user.username }} a publié une critique</p>
+                            <p>{{ post.user.username }} a publié une criytique</p>
                             <div class="position-absolute top-0 end-0 p-2">{{ post.time_created }}</div>
                             <h3>{{ post.headline }} -
-                                {% with ''|center:post.rating as range %}
-                                {% for _ in range %}
-                                *
+                                {% for i in range %}
+                                    {% if post.rating > i  %}
+                                    &#9733
+                                    {% else %}
+                                    &#9734
+                                    {% endif %}
                                 {% endfor %}
-                                {% endwith %}
                             </h3>
                             {{ post.body }}
                             {% if post.user == request.user %}

@@ -17,4 +17,4 @@ def flow(request):
     tickets = Ticket.objects.all()
     reviews = Review.objects.all()
     flow_posts = list(sorted(chain(tickets, reviews), key=attrgetter("time_created"), reverse=True))
-    return render(request, "flow/flow.html", context={"data": flow_posts})
+    return render(request, "flow/flow.html", context={"data": flow_posts, "range": range(5)})

@@ -3,4 +3,39 @@
 <!-- content -->
 {% block content %}
     liste des suiveurs/suivis
+    <div class="p-5">
+        <div class="border border-secondary">
+            <div class="px-5 py-2">
+                <div class="position-relative">
+                    <form method="post" action="/follow/">
+                        {% csrf_token %}
+                        <div class="border border-secondary p-2">
+                            <label for="id_user" class="form-label">Follow someone?</label>
+                            {{ follow_an_user }}
+                        </div>
+                        <button type="submit" class="btn btn-primary">Valider</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <form method="GET">
+        <div>
+            users followed:
+            {% for user in users_followed %}
+                <div>
+                    {{ user.followed_user }}
+                </div>
+            {% endfor %}
+        </div>
+        <br>
+        <div>
+            followed_by:
+            {% for user in followed_by %}
+                <div>
+                    {{ user.user }}
+                </div>
+            {% endfor %}
+        </div>
+    </form>
 {% endblock content %}
