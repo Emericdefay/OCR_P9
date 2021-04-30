@@ -3,4 +3,11 @@
 <!-- content -->
 {% block content %}
     création de critique
+    <form method="post">
+    {% csrf_token %}
+    {{ form }}
+    <div>
+        <button type="submit" class="btn btn-primary">Submit review</button>
+    </div>
+    </form>
 {% endblock content %}

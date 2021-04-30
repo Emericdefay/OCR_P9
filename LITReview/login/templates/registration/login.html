@@ -1,19 +1,32 @@
 {% extends "base.html" %}
 
-<!-- main_menu -->
-{% block main_menu %}
-    <a href="/login/" class="logo">
-        <img src="https://user.oc-static.com/upload/2020/09/18/16004297044411_P7.png" alt="LITReview"/>
-    </a>
-{% endblock main_menu %}
-
 <!-- content -->
 {% block session %}
-    login<br>
-    <a href="/signin/" class="btn btn-primary">Sign-in</a>
-    <form method="post" class="form-group">
-    {% csrf_token %}
-    {{ form }}
-    <button type="submit" class="btn btn-primary">Login</button>
-    </form>
-{% endblock session %}
+<div class="row">
+    <div class="col text-center">
+    presentation
+        <div class="row">
+            <div class="col">
+                <h1>Register</h1>
+            </div>
+            <div class="col">
+                <h1>Login</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col align-self-center">
+                <a href="/signin/" class="btn btn-primary">Sign-in</a>
+            </div>
+            <div class="col align-self-center">
+                <form method="post">
+                {% csrf_token %}
+                {{ form }}
+                <div>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

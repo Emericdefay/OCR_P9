@@ -3,11 +3,10 @@ from django.contrib.auth.models import User
 from django.forms.utils import ErrorList
 
 class UserCreationForm(UserCreationForm):
-    username = forms.CharField(label="Enter your username", widget=forms.TextInput(attrs={'placeholder': 'Username'}))
-    password1 = forms.CharField(label="Enter your password", widget=forms.PasswordInput(attrs={"placeholder": "Enter your password"})) 
-    password2 = forms.CharField(label="Confirm your password", widget=forms.PasswordInput(attrs={"placeholder": "Confirm your password"})) 
+    username = forms.CharField(label="", widget=forms.TextInput(attrs={'placeholder': 'Username'}))
+    password1 = forms.CharField(label="", widget=forms.PasswordInput(attrs={"placeholder": "Enter your password"})) 
+    password2 = forms.CharField(label="", widget=forms.PasswordInput(attrs={"placeholder": "Confirm your password"})) 
     
-    username.initial = "Enter your username"
     class Meta:
         model = User
         fields = ("username", "password1", "password2")

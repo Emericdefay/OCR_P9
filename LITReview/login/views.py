@@ -1,7 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 
 # Create your views here.
 
 def log(request):
-    return render(request, "login/login.html")
+    if not request.user.is_authenticated: 
+        return render(request, "registration/login.html")
+    else:
+        return redirect("/flow")
+    

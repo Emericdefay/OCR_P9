@@ -19,7 +19,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("", include("login.urls")),
+    path("", include("home.urls")),
     path("", include("django.contrib.auth.urls")),
     path("login/", include("login.urls")),
     path("signin/", include("signin.urls")),
@@ -27,5 +27,5 @@ urlpatterns = [
     path("follow/", include("follow.urls")),
     path("posts/", include("posts.urls")),
     path("ask/", include("ask_review.urls")),
-    path("create/", include("create_review.urls")),
+    path("create/<int:pk>/", include("create_review.urls")),
 ]

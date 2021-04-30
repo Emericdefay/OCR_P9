@@ -3,4 +3,22 @@
 <!-- content -->
 {% block content %}
     historique de mes posts
+    <form method="get">
+        {% for ticket in tickets %}
+            <div class="p-5">
+                <div class="position-relative">
+                    <div class="border border-secondary p-2">
+                        <p>{{ ticket.user.username }} a publié un ticket</p>
+                        <div class="position-absolute top-0 end-0 p-2">{{ ticket.time_created }}</div>
+                        <h3>{{ ticket.title }}</h3>
+                        {{ ticket.description }}
+                        <div class="position-absolute bottom-0 end-0 p-2">
+                            <button type="button" class="btn btn-primary">Modifier</button>
+                            <button type="button" class="btn btn-outline-danger">Supprimer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </form>
 {% endblock content %}

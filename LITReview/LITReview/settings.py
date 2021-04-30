@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'home.apps.HomeConfig',
     'login.apps.LoginConfig',
     'flow.apps.FlowConfig',
     'follow.apps.FollowConfig',
@@ -113,6 +114,8 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'Europe/Paris'
+
+DATETIME_FORMAT = "%H:%M, %d %m %Y"
 
 USE_I18N = True
 

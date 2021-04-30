@@ -7,12 +7,15 @@ from .forms import UserCreationForm, DivErrorList
 # Create your views here.
 
 def signin(request):
-    if request.method == "POST":
-        form = UserCreationForm(request.POST)
-        if form.is_valid:
-            form.save()
-            return redirect("/login/")
-    elif request.method == "GET":
-        form = UserCreationForm(request.POST, error_class=DivErrorList)
+    if request.user.is_authenticated:
+        return redirect("/flow")
+    else:
+        if request.method == "POST":
+            form = UserCreationForm(request.POST)
+            if form.is_valid:
+                form.save()
+                return redirect("/login/")
+        elif request.method == "GET":
+            form = UserCreationForm(request.POST, error_class=DivErrorList)
 
-    return render(request, "signin/signin.html", {"form": form})
+        return render(request, "signin/signin.html", {"form": form})
