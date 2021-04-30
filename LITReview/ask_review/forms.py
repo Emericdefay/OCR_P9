@@ -7,7 +7,7 @@ class CreateTicket(forms.Form):
     Args:
         forms ([type]): [description]
     """
-    title = forms.CharField(widget=forms.Textarea)
+    title = forms.CharField(min_length=2)
     description = forms.CharField(widget=forms.Textarea)
     # image = forms.ImageField()
 
@@ -15,7 +15,7 @@ class CreateTicket(forms.Form):
         """[summary]
         """
         super(CreateTicket, self).__init__(*args, **kwargs)
-        self.fields['description'].widget.attrs['cols'] = 100
-        self.fields['description'].widget.attrs['rows'] = 10
-        self.fields['title'].widget.attrs['cols'] = 100
-        self.fields['title'].widget.attrs['rows'] = 1
+        self.fields['description'].widget.attrs['style'] = "width:100%; height: 100%;"
+        # self.fields['description'].widget.attrs['rows'] = 10
+        self.fields['title'].widget.attrs['style'] = "width:100%; height: 100%;"
+        # self.fields['title'].widget.attrs['rows'] = 1

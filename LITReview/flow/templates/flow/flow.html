@@ -2,9 +2,76 @@
 
 <!-- content -->
 {% block content %}
-    tickets classé par -date-parution
-    <div class="">
-        <a href="/ask/" class="btn btn-primary">Demander une critique</a>
-        <a href="/create/" class="btn btn-primary">Créer une critique</a>
+    posts classé par -date-parution
+    
+    {{ reviews }}
+    <div class="row px-5">
+        <a href="/ask/" class="col btn btn-primary mx-5">Demander une critique</a>
+        <a href="/create/" class="col btn btn-primary mx-5">Créer une critique</a>
     </div>
+
+    <form method="get">
+        {% for post in data %}
+
+            {% comment %} ticket {% endcomment %}
+            {% if post.title %}
+                <div class="p-5">
+                    <div class="position-relative">
+                        <div class="border border-secondary p-2">
+                            <p>{{ post.user.username }} a publié un ticket</p>
+                            <div class="position-absolute top-0 end-0 p-2">{{ post.time_created }}</div>
+                            <h3>{{ post.title }}</h3>
+                            {{ post.description }}
+                            {% if post.user == request.user %}
+                                <div class="position-absolute bottom-0 end-0 p-2">
+                                    <button type="button" class="btn btn-primary">Moddzier</button>
+                                    <button type="button" class="btn btn-outline-danger">Supprimer</button>
+                                </div>
+                            {% else %}
+                                <div class="position-absolute bottom-0 end-0 p-2">
+                                    <button type="button" class="btn btn-primary">Créer une critique</button>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+            {% comment %} review {% endcomment %}
+            {% else %}
+                <div class="p-5">
+                    <div class="position-relative">
+                        <div class="border border-secondary p-2">
+                            <p>{{ post.user.username }} a publié une critique</p>
+                            <div class="position-absolute top-0 end-0 p-2">{{ post.time_created }}</div>
+                            <h3>{{ post.headline }}</h3>
+                            {{ post.body }}
+                            {% if post.user == request.user %}
+                                <div class="position-absolute bottom-0 end-0 p-2">
+                                    <button type="button" class="btn btn-primary">Modifier</button>
+                                    <button type="button" class="btn btn-outline-danger">Supprimer</button>
+                                </div>
+                            {% else %}
+                                <div class="position-absolute bottom-0 end-0 p-2">
+                                    <button type="button" class="btn btn-primary">Créer une critique</button>
+                                </div>
+                            {% endif %}
+
+                                <div class="px-2 pb-5">
+                                    <div class="position-relative">
+                                        <div class="border border-secondary p-2">
+                                            <p>{{ post.ticket.user.username }} a publié un ticket</p>
+                                            <div class="position-absolute top-0 end-0 p-2">{{ post.ticket.time_created }}</div>
+                                            <h3>{{ post.ticket.title }}</h3>
+                                            {{ post.ticket.description }}
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </form>
+
+
 {% endblock content %}

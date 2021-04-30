@@ -8,24 +8,37 @@
         {% csrf_token %}
         <div class="p-5">
             <div class="border border-secondary">
-                <div class="p-5">
+                <div class="px-5 py-2">
                     <div class="position-relative">
                         <div class="border border-secondary p-2">
-                            <p>{{ ticket.user.username }} a publié un ticket</p>
-                            <div class="position-absolute top-0 end-0 p-2">{{ ticket.time_created }}</div>
-                            <h3>{{ ticket.title }}</h3>
-                            {% comment %} 
-                            <!-- Uncomment for image integration -->
-                            <div class"row">
-                                <div class="col">
-                                    {{ ticket.image }}
-                                </div>    
-                                <div class="col">
-                                    TICKET.DESCRIPTION GO HERE
-                                </div>
-                            </div> 
-                            {% endcomment %}
-                            {{ ticket.description }}
+                            {% if ticket.title|length > 1 %}
+                                <p>{{ ticket.user.username }} a publié un ticket {{ticket.title}} </p>
+                                <div class="position-absolute top-0 end-0 p-2">{{ ticket.time_created }}</div>
+                                <h3>{{ ticket.title }}</h3>
+                                {% comment %} 
+                                <!-- Uncomment for image integration -->
+                                <div class"row">
+                                    <div class="col">
+                                        {{ ticket.image }}
+                                    </div>    
+                                    <div class="col">
+                                        TICKET.DESCRIPTION GO HERE
+                                    </div>
+                                </div> 
+                                {% endcomment %}
+                                {{ ticket.description }}
+                            {% else %}
+                                <p>Livre / Article</p>
+                                <div class="position-absolute top-0 end-0 p-2">{{ ticket.time_created }}</div>
+                                <label for="id_title" class="form-label">Titre</label>
+                                {{ ticket.title }}
+                                <label for="id_description" class="form-label">Description</label>
+                                {{ ticket.description }}
+                                {% comment %} 
+                                <!-- Uncomment for image integration -->
+                                 BUTTON 
+                                {% endcomment %}
+                            {% endif %}
                         </div>
                     </div>
                     
@@ -33,28 +46,31 @@
                         <p>Critique</p>
                         <div>
                             <label for="id_headline" class="form-label">Titre</label>
-                            <div class="form-control">
+                            <div class="">
                                 {{ form.headline }}
                             </div>
                         </div>
                         <div>
                             <label for="id_rating" class="form-label">Note</label>
-                            <div class="form-control">
+                            <div class="">
                                 {{ form.rating }}
                             </div>
                         </div>
                         <div>
-                            <label for="id_body" class="form-label">Description</label>
-                            <div class="form-control">
+                            <label for="id_body" class="form-label">Commentaire</label>
+                            <div class="">
                                 {{ form.body }}
                             </div>
                         </div>
                     </div>
-                    
+                    <div class="">
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end pt-2">
+                            <button type="submit" class="btn btn-primary">Submit review</button>
+                            <a class="btn btn-outline-primary me-md-2" type="button" href="javascript:history.back()">Back</a>
+                        </div>  
+                    </div>
                 </div>
-                <div class="d-grid gap-2 d-md-flex justify-content-md-end p-5">
-                    <button type="submit" class="btn btn-primary">Submit review</button>
-                </div>    
+                   
             </div>
         </div>
     </form>
