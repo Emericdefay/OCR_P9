@@ -52,8 +52,12 @@
                         </div>
                         <div>
                             <label for="id_rating" class="form-label">Note</label>
-                            <div class="">
-                                {{ form.rating }}
+                            <div class="row">
+                                {% for rate in form.rating %}
+                                    <div class="col">
+                                        {{ rate }}
+                                    </div>
+                                {% endfor %}
                             </div>
                         </div>
                         <div>

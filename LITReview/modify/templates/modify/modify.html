@@ -1,1 +1,19 @@
-modif
+{% extends "base.html" %}
+
+<!-- content -->
+{% block content %}
+    modification
+    <form method="post">
+        {% csrf_token %}
+        <div class="p-5">
+            <div class="position-relative">
+                <div class="border border-secondary px-2 pb-5 pt-2">
+                    {{ data }}
+                    <div class="position-absolute bottom-0 end-0 p-2">
+                        <button type="submit" class="btn btn-primary">Modifier</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}

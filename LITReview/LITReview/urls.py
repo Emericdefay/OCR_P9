@@ -29,6 +29,6 @@ urlpatterns = [
     path("ask/", include("ask_review.urls")),
     path("create/", include("create_review.urls")),
     path("create/<int:id_ticket>/", include("create_review.urls")),
-    path("modify/<str:user>/<int:id_modify>/", include("modify.urls")),
-    path("delete/<int:id_delete>/", include("delete.urls")),
+    path("modify/<str:content>/<int:id_modify>/", include("modify.urls")),
+    path("delete/<str:content>/<int:id_delete>/", include("delete.urls")),
 ]

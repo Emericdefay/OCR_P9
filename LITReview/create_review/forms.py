@@ -1,16 +1,22 @@
 from django import forms
 
+from .models import Review
 
-class CreateReview(forms.Form):
+class CreateReview(forms.ModelForm):
     """[summary]
 
     Args:
         forms ([type]): [description]
     """
     headline = forms.CharField()
-    rating = forms.IntegerField(min_value=0, max_value=5)
+    #rating = forms.IntegerField(min_value=0, max_value=5)
     body = forms.CharField(widget=forms.Textarea)
     # image = forms.ImageField()
+    rating = forms.IntegerField(widget=forms.RadioSelect(choices=((1, "1"), (2, "2"), (3, "3"), (4, "4"), (5, "5"))))
+    class Meta:
+                model = Review
+                fields = ["headline", "rating", "body"]
+                
 
     def __init__(self, *args, **kwargs):
         """[summary]
@@ -22,6 +28,7 @@ class CreateReview(forms.Form):
         #self.fields['body'].widget.attrs['rows'] = 10
         #self.fields["rating"].widget = forms.ChoiceField(choices=[(1, 1)])
 
+        
 
 """
     ticket = models.ForeignKey(Ticket, on_delete=models.CASCADE)

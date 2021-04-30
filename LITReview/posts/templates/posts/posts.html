@@ -4,21 +4,67 @@
 {% block content %}
     historique de mes posts
     <form method="get">
-        {% for ticket in tickets %}
-            <div class="p-5">
-                <div class="position-relative">
-                    <div class="border border-secondary p-2">
-                        <p>{{ ticket.user.username }} a publié un ticket</p>
-                        <div class="position-absolute top-0 end-0 p-2">{{ ticket.time_created }}</div>
-                        <h3>{{ ticket.title }}</h3>
-                        {{ ticket.description }}
-                        <div class="position-absolute bottom-0 end-0 p-2">
-                            <button type="button" class="btn btn-primary">Modifier</button>
-                            <button type="button" class="btn btn-outline-danger">Supprimer</button>
+        {% for post in data %}
+
+            {% comment %} ticket {% endcomment %}
+            {% if post.title %}
+                <div class="p-5">
+                    <div class="position-relative">
+                        <div class="border border-secondary p-2">
+                            <p>{{ post.user.username }} a publié un ticket</p>
+                            <div class="position-absolute top-0 end-0 p-2">{{ post.time_created }}</div>
+                            <h3>{{ post.title }}</h3>
+                            {{ post.description }}
+                            {% if post.user == request.user %}
+                                <div class="position-absolute bottom-0 end-0 p-2">
+                                    <a href="/modify/ticket/{{ post.id }}" class="btn btn-primary">Modifier</a>
+                                    <a href="/delete/ticket/{{ post.id }}" class="btn btn-outline-danger">Supprimer</a>
+                                </div>
+                            {% else %}
+                                <div class="position-absolute bottom-0 end-0 p-2">
+                                    <a href="/create/{{ post.id }}" class="btn btn-primary">Créer une critique</a>
+                                </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
-            </div>
+
+            {% comment %} review {% endcomment %}
+            {% else %}
+                <div class="p-5">
+                    <div class="position-relative">
+                        <div class="border border-secondary p-2">
+                            <p>{{ post.user.username }} a publié une critique</p>
+                            <div class="position-absolute top-0 end-0 p-2">{{ post.time_created }}</div>
+                            <h3>{{ post.headline }} -
+                                {% with ''|center:post.rating as range %}
+                                {% for _ in range %}
+                                *
+                                {% endfor %}
+                                {% endwith %}
+                            </h3>
+                            {{ post.body }}
+                            {% if post.user == request.user %}
+                                <div class="position-absolute bottom-0 end-0 p-2">
+                                    <a href="/modify/review/{{ post.id }}" class="btn btn-primary">Modifier</a>
+                                    <a href="/delete/review/{{ post.id }}" class="btn btn-outline-danger">Supprimer</a>
+                                </div>
+                            {% endif %}
+
+                                <div class="px-2 pb-5">
+                                    <div class="position-relative">
+                                        <div class="border border-secondary p-2">
+                                            <p>{{ post.ticket.user.username }} a publié un ticket</p>
+                                            <div class="position-absolute top-0 end-0 p-2">{{ post.ticket.time_created }}</div>
+                                            <h3>{{ post.ticket.title }}</h3>
+                                            {{ post.ticket.description }}
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
         {% endfor %}
     </form>
 {% endblock content %}
