@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'posts.apps.PostsConfig',
     'ask_review.apps.AskReviewConfig',
     'create_review.apps.CreateReviewConfig',
+    'modify.apps.ModifyConfig',
+    'delete.apps.DeleteConfig',
 ]
 
 MIDDLEWARE = [
