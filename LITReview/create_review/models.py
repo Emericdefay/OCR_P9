@@ -7,6 +7,11 @@ from ask_review.models import Ticket
 # Create your models here.
 
 class Review(models.Model):
+    """[summary]
+
+    Args:
+        models ([type]): [description]
+    """
     ticket = models.ForeignKey(Ticket, on_delete=models.CASCADE)
     rating = models.PositiveSmallIntegerField(validators=[MinValueValidator(0), MaxValueValidator(5)])
     user = models.ForeignKey(User, on_delete=models.CASCADE)

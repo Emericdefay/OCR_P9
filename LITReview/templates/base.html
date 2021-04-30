@@ -82,6 +82,7 @@
         <div class="content">
         {% if user.is_authenticated %}
             {% block content %}
+                <p>You are already logged-in: <a href="/flow/" class="text-primary">Home page</a>.</p>
             {% endblock %}
         {% else %}
             {% block session %}

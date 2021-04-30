@@ -3,11 +3,59 @@
 <!-- content -->
 {% block content %}
     création de critique
+    
     <form method="post">
-    {% csrf_token %}
-    {{ form }}
-    <div>
-        <button type="submit" class="btn btn-primary">Submit review</button>
-    </div>
+        {% csrf_token %}
+        <div class="p-5">
+            <div class="border border-secondary">
+                <div class="p-5">
+                    <div class="position-relative">
+                        <div class="border border-secondary p-2">
+                            <p>{{ ticket.user.username }} a publié un ticket</p>
+                            <div class="position-absolute top-0 end-0 p-2">{{ ticket.time_created }}</div>
+                            <h3>{{ ticket.title }}</h3>
+                            {% comment %} 
+                            <!-- Uncomment for image integration -->
+                            <div class"row">
+                                <div class="col">
+                                    {{ ticket.image }}
+                                </div>    
+                                <div class="col">
+                                    TICKET.DESCRIPTION GO HERE
+                                </div>
+                            </div> 
+                            {% endcomment %}
+                            {{ ticket.description }}
+                        </div>
+                    </div>
+                    
+                    <div class="border border-secondary p-2">
+                        <p>Critique</p>
+                        <div>
+                            <label for="id_headline" class="form-label">Titre</label>
+                            <div class="form-control">
+                                {{ form.headline }}
+                            </div>
+                        </div>
+                        <div>
+                            <label for="id_rating" class="form-label">Note</label>
+                            <div class="form-control">
+                                {{ form.rating }}
+                            </div>
+                        </div>
+                        <div>
+                            <label for="id_body" class="form-label">Description</label>
+                            <div class="form-control">
+                                {{ form.body }}
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end p-5">
+                    <button type="submit" class="btn btn-primary">Submit review</button>
+                </div>    
+            </div>
+        </div>
     </form>
 {% endblock content %}

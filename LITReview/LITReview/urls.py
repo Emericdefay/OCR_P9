@@ -27,5 +27,6 @@ urlpatterns = [
     path("follow/", include("follow.urls")),
     path("posts/", include("posts.urls")),
     path("ask/", include("ask_review.urls")),
-    path("create/<int:pk>/", include("create_review.urls")),
+    path("create/", include("create_review.urls")),
+    path("create/<int:id_ticket>/", include("create_review.urls")),
 ]

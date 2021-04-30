@@ -3,8 +3,17 @@ from django.shortcuts import render, redirect
 from .forms import CreateTicket
 from .models import Ticket
 
+
 # Create your views here.
 def ask_review(request):
+    """[summary]
+
+    Args:
+        request ([type]): [description]
+
+    Returns:
+        [type]: [description]
+    """
     if not request.user.is_authenticated:
         return redirect("/login")
     else:
@@ -14,8 +23,9 @@ def ask_review(request):
                 stitle = form.cleaned_data["title"]
                 sdescription = form.cleaned_data["description"]
                 suser = request.user
-
-                data = Ticket(title=stitle, description=sdescription, user=suser)
+                data = Ticket(title=stitle,
+                              description=sdescription,
+                              user=suser)
                 data.save()
                 return redirect("/posts/")
             else:

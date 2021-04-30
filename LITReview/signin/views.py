@@ -6,7 +6,16 @@ from .forms import UserCreationForm, DivErrorList
 
 # Create your views here.
 
+
 def signin(request):
+    """[summary]
+
+    Args:
+        request ([type]): [description]
+
+    Returns:
+        [type]: [description]
+    """
     if request.user.is_authenticated:
         return redirect("/flow")
     else:
