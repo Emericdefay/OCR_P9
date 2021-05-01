@@ -1,14 +1,14 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect
 
 
 def home(request):
-    """[summary]
+    """Redirect user form root to /connect or /flow
 
     Args:
-        request ([type]): [description]
+        request ([HttpRequest]): instance of HttpRequest
 
     Returns:
-        [type]: [description]
+        [redirect]: To the most appropriate page.
     """
     if not request.user.is_authenticated:
         return redirect("/connect")

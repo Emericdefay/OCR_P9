@@ -2,22 +2,22 @@
 
 <!-- content -->
 {% block content %}
-    liste des suiveurs/suivis
     <div class="p-5">
         <form method="post" action="/follow/">
             <div class="p-5">
-            {% csrf_token %}
+                {% csrf_token %}
                 <h3 class="text-center">Suivi d'autres utilisateurs</h3>
-                    <div class="">
-                        {{ follow_an_user }}
-                        <button type="submit" class="btn btn-primary">Envoyer</button>
-                    </div>                
+                <div class="">
+                    {{ follow_an_user }}
+                    <button type="submit" class="btn btn-primary">Envoyer</button>
+                </div>                
             </div>
         </form>
     
         <form method="GET">
             <div class="p-5">
                 <h3 class="text-center">Abonnements</h3>
+                {% comment %}Abonnements{% endcomment %}
                 {% for user in users_followed %}
                     <div class="input-group mb-1">
                         <div class="position-relative form-control">
@@ -31,6 +31,7 @@
             </div>
             <div class="p-5">
                 <h3 class="text-center">Abonnés</h3>
+                {% comment %}Abonnés"{% endcomment %}
                 {% for user in followed_by %}
                     <div class="input-group mb-1">
                         <div class="form-control ">

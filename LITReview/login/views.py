@@ -1,16 +1,21 @@
 from django.shortcuts import render, redirect
-from .forms import PlaceholderAuthForm
 from django.contrib.auth import authenticate, login
+
+from .forms import PlaceholderAuthForm
 
 
 def log(request):
-    """[summary]
+    """Allow user to login.
 
     Args:
-        request ([type]): [description]
+        request (HttpRequest): instance of HttpRequest
 
     Returns:
-        [type]: [description]
+        [render]: Render the page.
+            request: HttpRequest
+            template: The template needed to be show : ./templates/login/login.html
+            context: context called in template
+        [redirect]: Redirect to the appropirate page.
     """
     if not request.user.is_authenticated:
         if request.method == "GET":

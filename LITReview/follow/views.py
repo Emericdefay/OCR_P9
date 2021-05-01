@@ -4,16 +4,20 @@ from django.db.models import Q
 
 from .models import UserFollows
 from .forms import FollowSomeone
-# Create your views here.
+
 
 def follow(request):
-    """[summary]
+    """ Allow to follow users.
 
     Args:
-        request ([type]): [description]
+        request (HttpRequest): instance of HttpRequest
 
     Returns:
-        [type]: [description]
+        [render]: Render the page.
+            request: HttpRequest
+            template: The template needed to be show : ./templates/follow/follow.html
+            context: context called in template
+        [redirect]: Redirect to the appropriate page.
     """
     if request.user.is_authenticated:
         if request.method == "GET":
@@ -37,7 +41,17 @@ def follow(request):
     else:
         return redirect("/connect/")
 
+
 def delete(request, id_delete):
+    """ Allow user to unfollow someone.
+
+    Args:
+        request (HttpRequest): instance of HttpRequest
+        id_delete (int): id of the user unfollowed
+
+    Returns:
+        [redirect]: Redirect to the appropriate page.
+    """
     try:
         UserFollows.objects.get(Q(id=id_delete)&Q(user=request.user)).delete()
         return redirect("/follow/")

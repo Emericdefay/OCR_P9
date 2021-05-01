@@ -8,13 +8,17 @@ from create_review.forms import CreateReview
 
 
 def modify(request, content, id_modify):
-    """[summary]
+    """Allow user to modify their own tickets and reviews.
 
     Args:
-        request ([type]): [description]
+        request (HttpRequest): instance of HttpRequest
 
     Returns:
-        [type]: [description]
+        [render]: Render the page.
+            request: HttpRequest
+            template: The template needed to be show : ./templates/modify/modify.html
+            context: context called in template
+        [redirect]: Redirect to the appropirate page.
     """
     try:
         if request.method == "GET":
@@ -35,7 +39,6 @@ def modify(request, content, id_modify):
                         title=form.cleaned_data["title"])
                     Ticket.objects.filter(Q(id=id_modify) & Q(user=request.user)).update(
                         description=form.cleaned_data["description"])
-                    pass
                 return redirect("/posts/")
             elif content == "review":
                 form = CreateReview(request.POST)
@@ -46,7 +49,6 @@ def modify(request, content, id_modify):
                         rating=form.cleaned_data["rating"])
                     Review.objects.filter(Q(id=id_modify) & Q(user=request.user)).update(
                         body=form.cleaned_data["body"])
-                    pass
                 return redirect("/posts/")
     except Ticket.DoesNotExist:
         return redirect("/flow/")
