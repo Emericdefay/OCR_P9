@@ -15,7 +15,7 @@ def log(request):
     if not request.user.is_authenticated:
         if request.method == "GET":
             form = PlaceholderAuthForm()
-            return render(request, "registration/login.html", context={"form": form})
+            return render(request, "login/login.html", context={"form": form})
         else:
             suser = request.POST["username"]
             spassword = request.POST["password"]

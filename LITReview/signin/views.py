@@ -8,13 +8,13 @@ from .forms import UserCreationForm, DivErrorList
 
 
 def signin(request):
-    """[summary]
+    """ Allow to sign-in the website.
 
     Args:
-        request ([type]): [description]
+        request ([HttpRequest]): HttpRequest
 
     Returns:
-        [type]: [description]
+        [redirection]: Redirect to the more appropriate page.
     """
     if request.user.is_authenticated:
         return redirect("/flow")

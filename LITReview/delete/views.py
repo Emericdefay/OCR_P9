@@ -15,10 +15,10 @@ def delete(request, content, id_delete):
     """
     try:
         if content == "ticket":
-            Ticket.objects.get(Q(id=id_delete)&Q(user=request.user)) # .delete()
+            Ticket.objects.get(Q(id=id_delete)&Q(user=request.user)).delete()
             return redirect("/posts/")
         if content == "review":
-            Review.objects.get(Q(id=id_delete)&Q(user=request.user)) # .delete()
+            Review.objects.get(Q(id=id_delete)&Q(user=request.user)).delete()
             return redirect("/posts/")
     except Ticket.DoesNotExist:
         return redirect("/flow/")

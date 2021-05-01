@@ -30,10 +30,10 @@ class UserCreationForm(UserCreationForm):
 
 
 class DivErrorList(ErrorList):
-    """[summary]
+    """Surcharge the errorlist.
 
     Args:
-        ErrorList ([type]): [description]
+        ErrorList ([class]): collection of errors.
     """
     def __str__(self):
         return self.as_divs()

@@ -9,6 +9,6 @@ class PlaceholderAuthForm(AuthenticationForm):
         AuthenticationForm ([type]): [description]
     """
     username = forms.CharField(widget=forms.TextInput(
-        attrs={'placeholder': 'Username'}))
+        attrs={'placeholder': "Nom d'utilisateur"}))
     password = forms.CharField(widget=forms.PasswordInput(
-        attrs={"placeholder": "Enter password"}))
+        attrs={"placeholder": "Mot de passe"}))
