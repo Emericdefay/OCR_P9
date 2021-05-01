@@ -18,7 +18,11 @@
                 <div class="p-5">
                     <div class="position-relative">
                         <div class="border border-secondary p-2">
-                            <p>{{ post.user.username }} a publié un ticket</p>
+                            {% if post.user.username == user.username %}
+                                <p>Vous avez demandé une critique</p>
+                            {% else %}
+                                <p>{{ post.user.username }} a demandé une critique</p>
+                            {% endif %}
                             <div class="position-absolute top-0 end-0 p-2">{{ post.time_created|date:"DATETIME_FORMAT" }}</div>
                             <h3>{{ post.title }}</h3>
                             {{ post.description }}
@@ -41,7 +45,12 @@
                 <div class="p-5">
                     <div class="position-relative">
                         <div class="border border-secondary p-2">
-                            <p>{{ post.user.username }} a publié une critique</p>
+                            {% if post.user.username == user.username %}
+                                <p>Vous avez publié une critique</p>
+                            {% else %}
+                                <p>{{ post.user.username }} a publié une critique</p>
+                            {% endif %}
+                            
                             <div class="position-absolute top-0 end-0 p-2">{{ post.time_created|date:"DATETIME_FORMAT" }}</div>
                             <h3>{{ post.headline }} - 
                                 {% for i in range %}

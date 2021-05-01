@@ -119,11 +119,11 @@ LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'Europe/Paris'
 
-DATETIME_FORMAT = "%H:%M, %d %m %Y"
+DATETIME_FORMAT = "H:i, d/m/Y"
 
 USE_I18N = True
 
-USE_L10N = True
+USE_L10N = False
 
 USE_TZ = True
 

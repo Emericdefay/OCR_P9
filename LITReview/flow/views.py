@@ -26,7 +26,7 @@ def flow(request):
     intersection_reviews = (
     reviews.filter(user=request.user) |
     reviews.filter(user__id__in=UserFollows.objects.filter(user=request.user).values_list("followed_user_id")) |
-    reviews.filter(ticket__id__in=Review.objects.filter(id__in=Ticket.objects.all()).values_list("ticket_id"))
+    reviews.filter(ticket__id__in=Review.objects.filter(id__in=Ticket.objects.all().values_list("id")).values_list("ticket_id"))
     )
 
     flow_posts = list(sorted(chain(intersection_tickets, intersection_reviews),

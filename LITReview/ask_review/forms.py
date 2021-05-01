@@ -13,8 +13,10 @@ class CreateTicket(forms.ModelForm):
     description = forms.CharField(widget=forms.Textarea)
     # image = forms.ImageField()
     class Meta:
-                model = Ticket
-                fields = ["title", "description"]
+        """[summary]
+        """
+        model = Ticket
+        fields = ["title", "description"]
 
     def __init__(self, *args, **kwargs):
         """[summary]
