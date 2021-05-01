@@ -4,6 +4,8 @@ from django.shortcuts import render
 
 from ask_review.models import Ticket
 from create_review.models import Review
+from follow.models import UserFollows
+
 
 def flow(request):
     """[summary]
@@ -16,5 +18,10 @@ def flow(request):
     """
     tickets = Ticket.objects.all()
     reviews = Review.objects.all()
-    flow_posts = list(sorted(chain(tickets, reviews), key=attrgetter("time_created"), reverse=True))
+    intersection_tickets = tickets.filter(user=request.user) | tickets.filter(
+        user__id__in=UserFollows.objects.filter(user=request.user).values_list("id"))
+    intersection_reviews = reviews.filter(user=request.user) | reviews.filter(
+        user__id__in=UserFollows.objects.filter(user=request.user).values_list("id"))
+    flow_posts = list(sorted(chain(intersection_tickets, intersection_reviews),
+                      key=attrgetter("time_created"), reverse=True))
     return render(request, "flow/flow.html", context={"data": flow_posts, "range": range(5)})
