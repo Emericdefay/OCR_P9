@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
+from django.db.models import Q
 
 from .models import UserFollows
 from .forms import FollowSomeone
@@ -32,3 +33,10 @@ def follow(request):
                 return redirect("/follow/")
         else:
             return redirect("/posts/")
+
+def delete(request, id_delete):
+    try:
+        UserFollows.objects.get(Q(id=id_delete)&Q(user=request.user)).delete()
+        return redirect("/follow/")
+    except UserFollows.DoesNotExist:
+        return redirect("/follow/")
