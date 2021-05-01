@@ -5,12 +5,14 @@
     <h1>Register</h1>
     <form method="POST" class="form-horizontal d-grid gap-3">
         <div class="d-grid gap-1">
-        {% csrf_token %}
-        {% for input in form %}
-            <div>
-            {{ input }}
+            {% csrf_token %}
+            <div class="mb-3">
+                {% for input in form %}
+                    <div class="py-1">
+                        {{ input }}
+                    </div>
+                {% endfor %}
             </div>
-        {% endfor %}
         </div>
         <div>
             <a href="/connect/" class="btn btn-outline-primary">Retourner</a> 

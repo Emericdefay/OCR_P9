@@ -1,6 +1,4 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate
-# from django.contrib.auth.forms import UserCreationForm
 
 from .forms import UserCreationForm, DivErrorList
 
@@ -11,10 +9,13 @@ def signin(request):
     """ Allow to sign-in the website.
 
     Args:
-        request ([HttpRequest]): HttpRequest
+        request (HttpRequest): instance of HttpRequest
 
     Returns:
-        [redirection]: Redirect to the more appropriate page.
+        [render]: Render the page.
+            request: HttpRequest
+            template: The template needed to be show : ./templates/signin/signin.html
+            context: context called in template
     """
     if request.user.is_authenticated:
         return redirect("/flow")
@@ -24,6 +25,9 @@ def signin(request):
             if form.is_valid:
                 form.save()
                 return redirect("/connect/")
+            else:
+                # form is not valid.
+                return redirect("/signin/")
         elif request.method == "GET":
             form = UserCreationForm(request.POST, error_class=DivErrorList)
 

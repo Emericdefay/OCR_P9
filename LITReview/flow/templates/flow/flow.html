@@ -53,7 +53,7 @@
                             
                             <div class="position-absolute top-0 end-0 p-2">{{ post.time_created|date:"DATETIME_FORMAT" }}</div>
                             <h3>{{ post.headline }} - 
-                                {% for i in range %}
+                                {% for i in range_5 %}
                                     {% if post.rating > i  %}
                                     &#9733
                                     {% else %}
@@ -69,22 +69,20 @@
                                 </div>
                             {% endif %}
 
-                                <div class="px-2 pb-5">
-                                    <div class="position-relative">
-                                        <div class="border border-secondary p-2">
-                                            <p>{{ post.ticket.user.username }} a publié un ticket</p>
-                                            <div class="position-absolute top-0 end-0 p-2">{{ post.ticket.time_created }}</div>
-                                            <h3>{{ post.ticket.title }}</h3>
-                                            {{ post.ticket.description }}
-                                        </div>
+                            <div class="px-2 pb-5">
+                                <div class="position-relative">
+                                    <div class="border border-secondary p-2">
+                                        <p>{{ post.ticket.user.username }} a publié un ticket</p>
+                                        <div class="position-absolute top-0 end-0 p-2">{{ post.ticket.time_created }}</div>
+                                        <h3>{{ post.ticket.title }}</h3>
+                                        {{ post.ticket.description }}
                                     </div>
                                 </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             {% endif %}
         {% endfor %}
     </form>
-
-
 {% endblock content %}

@@ -2,21 +2,21 @@ from operator import attrgetter
 from itertools import chain
 
 from django.shortcuts import render
-from django.http import HttpResponse
 
 from ask_review.models import Ticket
 from create_review.models import Review
-# Create your views here.
 
 
 def post(request):
-    """[summary]
+    """ Allow to see the user's posts.
 
     Args:
-        request ([type]): [description]
+        request (HttpRequest): instance of HttpRequest
 
     Returns:
-        [type]: [description]
+        [render]: Render the page
+            request: HttpRequest
+            template: The template needed to be show : ./templates/posts/posts.html
     """
     if request.user.is_authenticated:
         if request.method == "GET":

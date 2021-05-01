@@ -2,7 +2,6 @@
 
 <!-- content -->
 {% block content %}
-    historique de mes posts
     <form method="get">
         {% for post in data %}
 
@@ -11,10 +10,17 @@
                 <div class="p-5">
                     <div class="position-relative">
                         <div class="border border-secondary p-2">
-                            <p>{{ post.user.username }} a publié un ticket</p>
+                        
+                            {% if post.user.username == user.username %}
+                                <p>Vous avez demandé une critique</p>
+                            {% else %}
+                                <p>{{ post.user.username }} a demandé une critique</p>
+                            {% endif %}
+
                             <div class="position-absolute top-0 end-0 p-2">{{ post.time_created }}</div>
                             <h3>{{ post.title }}</h3>
                             {{ post.description }}
+
                             {% if post.user == request.user %}
                                 <div class="position-absolute bottom-0 end-0 p-2">
                                     <a href="/modify/ticket/{{ post.id }}" class="btn btn-primary">Modifier</a>
@@ -28,13 +34,18 @@
                         </div>
                     </div>
                 </div>
-
             {% comment %} review {% endcomment %}
             {% else %}
                 <div class="p-5">
                     <div class="position-relative">
                         <div class="border border-secondary p-2">
-                            <p>{{ post.user.username }} a publié une critique</p>
+
+                            {% if post.user.username == user.username %}
+                                <p>Vous avez demandé une critique</p>
+                            {% else %}
+                                <p>{{ post.user.username }} a demandé une critique</p>
+                            {% endif %}
+
                             <div class="position-absolute top-0 end-0 p-2">{{ post.time_created }}</div>
                             <h3>{{ post.headline }} -
                                 {% for i in range %}
@@ -46,6 +57,7 @@
                                 {% endfor %}
                             </h3>
                             {{ post.body }}
+
                             {% if post.user == request.user %}
                                 <div class="position-absolute bottom-0 end-0 p-2">
                                     <a href="/modify/review/{{ post.id }}" class="btn btn-primary">Modifier</a>
@@ -53,16 +65,22 @@
                                 </div>
                             {% endif %}
 
-                                <div class="px-2 pb-5">
-                                    <div class="position-relative">
-                                        <div class="border border-secondary p-2">
-                                            <p>{{ post.ticket.user.username }} a publié un ticket</p>
-                                            <div class="position-absolute top-0 end-0 p-2">{{ post.ticket.time_created }}</div>
-                                            <h3>{{ post.ticket.title }}</h3>
-                                            {{ post.ticket.description }}
-                                        </div>
+                            <div class="px-2 pb-5">
+                                <div class="position-relative">
+                                    <div class="border border-secondary p-2">
+
+                                        {% if post.ticket.user.username == user.username %}
+                                            <p>Vous avez demandé une critique</p>
+                                        {% else %}
+                                            <p>{{ post.ticket.user.username }} a demandé une critique</p>
+                                        {% endif %}
+
+                                        <div class="position-absolute top-0 end-0 p-2">{{ post.ticket.time_created }}</div>
+                                        <h3>{{ post.ticket.title }}</h3>
+                                        {{ post.ticket.description }}
                                     </div>
                                 </div>
+                            </div>
                         </div>
                     </div>
                 </div>

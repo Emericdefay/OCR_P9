@@ -43,4 +43,4 @@ def flow(request):
 
     flow_posts = list(sorted(chain(intersection_tickets, intersection_reviews),
                       key=attrgetter("time_created"), reverse=True))
-    return render(request, "flow/flow.html", context={"data": flow_posts, "range": range(5)})
+    return render(request, "flow/flow.html", context={"data": flow_posts, "range_5": range(5)})
