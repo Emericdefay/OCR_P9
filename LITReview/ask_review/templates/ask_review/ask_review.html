@@ -6,19 +6,24 @@
         <div class="">
             <h2>Créer un Ticket</h2>
             <form method="POST" action="/ask/">
-                <div class="position-relative">
-                    {% csrf_token %}
-                    <div>
-                        <label for="id_title" class="form-label">Titre</label>
-                        {{ form.title }}
+                <div class="p-5">
+                    <div class="px-5 py-2">
+                        <div class="position-relative">
+                            {% csrf_token %}
+                            <div>
+                                <label for="id_title" class="form-label">Titre</label>
+                                
+                                {{ form.title }}
+                            </div>
+                            <div>
+                                <label for="id_description" class="form-label">Description</label>
+                                {{ form.description }}
+                            </div>
+                        </div>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button type="submit" class="btn btn-primary ">Envoyer</button>
                     </div>
-                    <div>
-                        <label for="id_description" class="form-label">Description</label>
-                        {{ form.description }}
                     </div>
-                </div>
-                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <button type="submit" class="btn btn-primary ">Ask review</button>
                 </div>
             </form>
         </div>

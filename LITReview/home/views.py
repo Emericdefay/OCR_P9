@@ -11,6 +11,6 @@ def home(request):
         [type]: [description]
     """
     if not request.user.is_authenticated:
-        return redirect("/login")
+        return redirect("/connect")
     else:
         return redirect("/flow")

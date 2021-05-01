@@ -23,7 +23,7 @@ def signin(request):
             form = UserCreationForm(request.POST)
             if form.is_valid:
                 form.save()
-                return redirect("/login/")
+                return redirect("/connect/")
         elif request.method == "GET":
             form = UserCreationForm(request.POST, error_class=DivErrorList)
 

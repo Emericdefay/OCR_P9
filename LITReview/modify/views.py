@@ -24,7 +24,7 @@ def modify(request, content, id_modify):
             elif content == "review":
                 review = Review.objects.get(Q(id=id_modify)&Q(user=request.user))
                 form = CreateReview(instance= review, initial={'headline': review.headline, "rating": review.rating, "body": review.body})
-            return render(request, "modify/modify.html", {"data": form})
+            return render(request, "modify/modify.html", {"form": form, "ticket": review.ticket})
         
         elif request.method == "POST":
             if content == "ticket":

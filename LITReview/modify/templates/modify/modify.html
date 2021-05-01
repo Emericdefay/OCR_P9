@@ -7,12 +7,53 @@
         {% csrf_token %}
         <div class="p-5">
             <div class="position-relative">
-                <div class="border border-secondary px-2 pb-5 pt-2">
-                    {{ data }}
-                    <div class="position-absolute bottom-0 end-0 p-2">
-                        <button type="submit" class="btn btn-primary">Modifier</button>
+                    <div class="border border-secondary px-2 pb-5 pt-2">
+                        Vous êtes en train de poster en réponse à {{ ticket.user.username }}
+                        <div class="border border-secondary px-2 pb-5 pt-2">
+                            <p>{{ ticket.user.username }} a publié un ticket </p>
+                            <div class="position-absolute top-0 end-0 p-2">{{ ticket.time_created }}</div>
+                            <h3>{{ ticket.title }}</h3>
+                            {% comment %} 
+                            <!-- Uncomment for image integration -->
+                            <div class"row">
+                                <div class="col">
+                                    {{ ticket.image }}
+                                </div>    
+                                <div class="col">
+                                    TICKET.DESCRIPTION GO HERE
+                                </div>
+                            </div> 
+                            {% endcomment %}
+                            {{ ticket.description }}
+                        </div>
                     </div>
-                </div>
+                    <div class="border border-secondary px-2 pb-5 pt-2">
+                        critique
+                        <div class="p-3">
+                            <div class="p-3">
+                                <label for="id_healine" class="form-label">Titre</label>
+                                {{ form.headline }}
+                            </div>
+                            <div class="p-3">
+                                <label for="id_rating" class="form-label">Note</label>
+                                <div class="row">
+                                    {% for rate in form.rating %}
+                                        <div class="col">
+                                            {{ rate }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="p-3">
+                                <label for="id_body" class="form-label">Commentaire</label>
+                                {{ form.body }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="position-absolute bottom-0 end-0 p-2">
+                        <button type="submit" class="btn btn-primary">Envoyer</button>
+                    </div>
             </div>
         </div>
     </form>
