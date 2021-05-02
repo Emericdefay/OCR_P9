@@ -115,7 +115,7 @@ python OCR_P9/LITReview/manage.py runserver
 ## 🎈 Usage <a name="usage"></a>
 
 <p>
-You can know discover [your django localversion](http://127.0.0.1:8000/)!<br>
+You can know discover <a href="http://127.0.0.1:8000/">your django localversion</a>!<br>
 In your browser, type this url in the navigation bar.
 </p>
 ```
