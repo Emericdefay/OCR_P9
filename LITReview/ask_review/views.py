@@ -13,7 +13,8 @@ def ask_review(request):
     Returns:
         [render]: Render the page.
             request: HttpRequest
-            template: The template needed to be show : ./templates/ask_review/ask_review.html
+            template: The template needed to be show :
+                        ./templates/ask_review/ask_review.html
             context: context called in template
         [redirect]: Redirect to the appropriate page.
     """

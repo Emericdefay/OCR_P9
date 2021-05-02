@@ -1,7 +1,5 @@
 from django import forms
 
-from .models import UserFollows
-
 
 class FollowSomeone(forms.Form):
     """Form to follow an user.

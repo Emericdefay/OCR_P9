@@ -14,7 +14,8 @@ def signin(request):
     Returns:
         [render]: Render the page.
             request: HttpRequest
-            template: The template needed to be show : ./templates/signin/signin.html
+            template: The template needed to be show :
+                        ./templates/signin/signin.html
             context: context called in template
     """
     if request.user.is_authenticated:

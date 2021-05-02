@@ -13,7 +13,8 @@ def log(request):
     Returns:
         [render]: Render the page.
             request: HttpRequest
-            template: The template needed to be show : ./templates/login/login.html
+            template: The template needed to be show :
+                        ./templates/login/login.html
             context: context called in template
         [redirect]: Redirect to the appropirate page.
     """

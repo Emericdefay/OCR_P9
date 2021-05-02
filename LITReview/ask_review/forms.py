@@ -12,7 +12,7 @@ class CreateTicket(forms.ModelForm):
     title = forms.CharField(min_length=2)
     description = forms.CharField(widget=forms.Textarea)
     # image = forms.ImageField()
-    
+
     class Meta:
         """Allow edition of fields mentionned.
         """
@@ -23,7 +23,9 @@ class CreateTicket(forms.ModelForm):
         """Allow edition of fields mentionned.
         """
         super(CreateTicket, self).__init__(*args, **kwargs)
-        self.fields['description'].widget.attrs['style'] = "width:100%; height: 100%;"
-        self.fields['title'].widget.attrs['style'] = "width:100%; height: 100%;"
-        # self.fields['image'].widget.attrs['style'] = "width:100%; height: 100%;"
-
+        self.fields['description'].widget.attrs[
+                                'style'] = "width:100%; height: 100%;"
+        self.fields['title'].widget.attrs[
+                                'style'] = "width:100%; height: 100%;"
+        # self.fields['image'].widget.attrs[
+        #           'style'] = "width:100%; height: 100%;"

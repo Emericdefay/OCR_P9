@@ -14,6 +14,7 @@ class UserFollows(models.Model):
         User, on_delete=models.CASCADE, related_name="followed_by")
 
     class Meta:
-        """ Return a tuple whose items are the same and in the same order as iterable's items.
+        """ Return a tuple whose items are the same
+        and in the same order as iterable's items.
         """
         unique_together = ('user', 'followed_user',)

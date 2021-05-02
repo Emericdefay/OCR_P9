@@ -12,7 +12,9 @@ class Review(models.Model):
         models ([module]): models SQL manipulation
     """
     ticket = models.ForeignKey(Ticket, on_delete=models.CASCADE)
-    rating = models.PositiveSmallIntegerField(validators=[MinValueValidator(0), MaxValueValidator(5)])
+    rating = models.PositiveSmallIntegerField(validators=[
+                                                MinValueValidator(0),
+                                                MaxValueValidator(5)])
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     headline = models.CharField(max_length=128)
     body = models.TextField(max_length=8192, blank=True)

@@ -29,9 +29,12 @@ class UserCreationForm(UserCreationForm):
 
     def __init__(self, *args, **kwargs):
         super(UserCreationForm, self).__init__(*args, **kwargs)
-        self.fields['username'].widget.attrs['style'] = "width:40%; height: 100%;"
-        self.fields['password1'].widget.attrs['style'] = "width:40%; height: 100%;"
-        self.fields['password2'].widget.attrs['style'] = "width:40%; height: 100%;"
+        self.fields['username'].widget.attrs[
+            'style'] = "width:40%; height: 100%;"
+        self.fields['password1'].widget.attrs[
+            'style'] = "width:40%; height: 100%;"
+        self.fields['password2'].widget.attrs[
+            'style'] = "width:40%; height: 100%;"
 
 
 class DivErrorList(ErrorList):
