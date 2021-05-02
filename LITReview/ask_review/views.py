@@ -26,8 +26,8 @@ def ask_review(request):
             if form.is_valid():
                 stitle = form.cleaned_data["title"]
                 sdescription = form.cleaned_data["description"]
-                
-                try: 
+
+                try:
                     simage = request.FILES["image"]
                 except KeyError:
                     simage = None
@@ -37,7 +37,7 @@ def ask_review(request):
                                 title=stitle,
                                 description=sdescription,
                                 user=suser,
-                                image= simage
+                                image=simage
                               )
 
                 data.save()

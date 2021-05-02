@@ -72,7 +72,7 @@ def create_review(request, id_ticket=None):
                         simage = request.FILES["image"]
                     except KeyError:
                         simage = None
-                        
+
                     suser = request.user
                     data_ticket = Ticket(
                                         title=stitle,

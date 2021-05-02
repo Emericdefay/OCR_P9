@@ -35,7 +35,10 @@ def modify(request, content, id_modify):
                                     "image": ticket.image
                                     })
 
-                return render(request, "modify/modify.html", {"form": form, "old_image": ticket.image})
+                return render(
+                            request,
+                            "modify/modify.html",
+                            {"form": form, "old_image": ticket.image})
 
             elif content == "review":
                 review = Review.objects.get(
@@ -67,7 +70,6 @@ def modify(request, content, id_modify):
                             description=form.cleaned_data["description"])
 
                     Ticket.objects.get(id=id_modify).delete()
-                    
 
                     stitle = form.cleaned_data["title"]
                     sdescription = form.cleaned_data["description"]
@@ -77,7 +79,7 @@ def modify(request, content, id_modify):
                                     title=stitle,
                                     description=sdescription,
                                     user=suser,
-                                    image= simage
+                                    image=simage
                                 )
 
                     data.save()

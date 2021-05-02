@@ -1,6 +1,4 @@
 from django import forms
-from django.forms.widgets import FileInput
-from django.forms import widgets
 
 from .models import Ticket
 
@@ -13,14 +11,16 @@ class CreateTicket(forms.ModelForm):
     """
     title = forms.CharField(min_length=2)
     description = forms.CharField(widget=forms.Textarea)
-    image = forms.ImageField(label="Télécharger une image", required=False, widget=forms.FileInput)
+    image = forms.ImageField(
+                            label="Télécharger une image",
+                            required=False,
+                            widget=forms.FileInput)
 
     class Meta:
         """Allow edition of fields mentionned.
         """
         model = Ticket
         fields = ["title", "description", "image"]
-
 
     def __init__(self, *args, **kwargs):
         """Allow edition of fields mentionned.
