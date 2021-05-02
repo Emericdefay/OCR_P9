@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="127.0.0.1:8000">
+  <a href="#">
     <img width=200px height=200px src="https://user.oc-static.com/upload/2020/09/18/16004297044411_P7.png" alt="LITReview logo">
   </a>
 </p>
@@ -114,16 +114,12 @@ python OCR_P9/LITReview/manage.py runserver
 
 ## 🎈 Usage <a name="usage"></a>
 
-django runserver
-
+<p>
+You can know discover [your django localversion](http://127.0.0.1:8000/)!<br>
+In your browser, type this url in the navigation bar.
+</p>
 ```
-cmd
-```
-
-if port already taken, 8080
-
-```
-cmd
+http://127.0.0.1:8000/
 ```
 
 ## ⛏️ Built Using <a name = "built_using"></a>
