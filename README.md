@@ -1,13 +1,14 @@
 <p align="center">
-  <a href="127.0.0.1:8000" rel="noopener">
- <img width=200px height=200px src="https://user.oc-static.com/upload/2020/09/18/16004297044411_P7.png" alt="LITReview logo"></a>
+  <a href="127.0.0.1:8000">
+    <img width=200px height=200px src="https://user.oc-static.com/upload/2020/09/18/16004297044411_P7.png" alt="LITReview logo">
+  </a>
 </p>
 
 <h3 align="center">LITReview Website Project</h3>
 
 ---
 
-<p align="center"> Few lines describing your project.
+<p align="center"> This projet is a first approach to django, proposed by OCR.
     <br> 
 </p>
 
@@ -20,8 +21,20 @@
 - [Authors](#authors)
 
 ## 🧐 About <a name = "about"></a>
+<p>
+This projet is a first approach to django.
+It contains several idioms to discover:
+- authentification
+- Models manipulation, union, intersection
+- Forms manipulation
+- django template language with blocks, conditions, filters...
+- bootstrap 
+- POO surcharge
+- django ORM in general
+- security
 
-1-2 paragraphs describing the purpose of the project.
+All stuff needed to create a web project.
+</p>
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 

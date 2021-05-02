@@ -6,26 +6,21 @@
         <div class="">
             <h2 class="text-center py-2">Créer un Ticket</h2>
             <form method="POST" action="/ask/">
-                <div class="">
-                    <div class="px-5">
-                        <div class="position-relative">
-                            {% csrf_token %}
-                            <div>
-                                <label for="id_title" class="form-label">Titre</label>
-                                
-                                {{ form.title }}
-                            </div>
-                            <div>
-                                <label for="id_description" class="form-label">Description</label>
-                                {{ form.description }}
-                            </div>
-                        </div>
-                    {% comment %}
-                    image button
-                    {% endcomment %}
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <button type="submit" class="btn btn-primary ">Envoyer</button>
-                    </div>
+                {% csrf_token %}     
+                <div class="position-relative">
+                    <div class="border border-secondary p-2">
+                        <div class="position-absolute top-0 end-0 p-2">{{ ticket.time_created }}</div>
+                        <label for="id_title" class="form-label">Titre</label>
+                        {{ form.title }}
+                        <label for="id_description" class="form-label">Description</label>
+                        {{ form.description }}
+                        {% comment %} 
+                        <!-- Uncomment for image integration -->
+                            BUTTON 
+                        {% endcomment %}
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button type="submit" class="btn btn-primary ">Envoyer</button>
+                        </div>  
                     </div>
                 </div>
             </form>

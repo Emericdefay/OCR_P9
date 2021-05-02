@@ -9,11 +9,9 @@
 
     <body>
         <header>
-            {% block main_menu %}
-                {% if user.is_authenticated %}
+            {% block main_menu %}            
                     <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
                         <div class="container-fluid">
-
                             {% if user.is_authenticated %}
                                 <div class="">
                                     <a class="navbar-brand" href="/flow/">LITReview</a>
@@ -24,23 +22,23 @@
                                 </div>
                             {% endif %}
 
-                            <button class="navbar-toggler" type="button" data-toggle="collapse">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
+                            {% if user.is_authenticated %}
+                                <button class="navbar-toggler" type="button" data-toggle="collapse">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
 
-                            <div class="collapse navbar-collapse">
-                                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                    <li class="nav-item"><a href="/flow/" class="nav-link text-light"> Flux </a></li>
-                                    <li class="nav-item"><a href="/posts/" class="nav-link text-light"> Posts </a></li>
-                                    <li class="nav-item"><a href="/follow/" class="nav-link text-light"> Abonnements </a></li>
-                                    <li class="nav-item"><a href="/logout/" class="nav-link text-light"> Se déconnecter </a></li>
-                                    <li class="nav-item"><a href="#" class="nav-link disabled">{{ user }}</a></li>
-                                </ul>
-                            </div>
+                                <div class="collapse navbar-collapse">
+                                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                        <li class="nav-item"><a href="/flow/" class="nav-link text-light"> Flux </a></li>
+                                        <li class="nav-item"><a href="/posts/" class="nav-link text-light"> Posts </a></li>
+                                        <li class="nav-item"><a href="/follow/" class="nav-link text-light"> Abonnements </a></li>
+                                        <li class="nav-item"><a href="/logout/" class="nav-link text-light"> Se déconnecter </a></li>
+                                        <li class="nav-item"><a href="#" class="nav-link disabled">{{ user }}</a></li>
+                                    </ul>
+                                </div>
+                            {% endif %}
                         </div>
-                    </nav>
-                    
-                {% endif %}
+                    </nav>              
             {% endblock %}
         </header>
 
