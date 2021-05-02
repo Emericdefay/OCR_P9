@@ -22,49 +22,79 @@
 
 ## 🧐 About <a name = "about"></a>
 <p>
-This projet is a first approach to django.
+This projet is a first approach to django.<br>
 It contains several idioms to discover:
-- authentification
-- Models manipulation, union, intersection
-- Forms manipulation
-- django template language with blocks, conditions, filters...
-- bootstrap 
-- POO surcharge
-- django ORM in general
-- security
-
+<ul>
+  <li>authentification</li>
+  <li>Models manipulation, union, intersection</li>
+  <li>Forms manipulation</li>
+  <li>django template language with blocks, conditions, filters...</li>
+  <li>bootstrap </li>
+  <li>POO surcharge</li>
+  <li>django ORM in general
+  <li>security</li>
+</ul>
 All stuff needed to create a web project.
 </p>
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
-Introduction to the deployment.
+<p>We need to setup our environment to launch our web project.</p>
 
 ### Prerequisites
 
-What things needed to be installed and how to install them.
+<p>
+First, you have to ensure that your python version is <strong>3.6</strong> or higher.<br>
+For more informations, check the <a href="#built-using">Built Using section</a>.
+</p>
+
+### 
+
+git clone
 
 ```
-Examples
+cmd
+```
+
+create env
+
+```
+python -m venv env
+```
+
+start env
+
+```
+cmd
+```
+
+install req
+
+```
+cmd
+```
+
+start env next time
+
+```
+cmd
 ```
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running.
 
-Say what the step will be
-
-```
-Example
-```
-
-And repeat
+django runserver
 
 ```
-until finished
+cmd
 ```
 
-End with an example of getting some data out of the system or using it for a little demo.
+
+if port already taken, 8080
+
+```
+cmd
+```
 
 
 ## 🎈 Usage <a name="usage"></a>
