@@ -16,6 +16,7 @@
 
 - [About](#about)
 - [Getting Started](#getting_started)
+- [Linting](#linting)
 - [Usage](#usage)
 - [Built Using](#built_using)
 - [Authors](#authors)
@@ -112,6 +113,17 @@ Then <strong>repeat the step 3</strong> and launch:</p>
 python OCR_P9/LITReview/manage.py runserver
 ```
 
+## ► Linting <a name="linting"></a>
+
+<p>
+Launch the terminal from your folder created at step 1.<br>
+Then <strong>repeat the step 3</strong> and launch:</p>
+
+```
+flake8 OCR_P9\LITReview
+```
+</p>
+
 ## 🎈 Usage <a name="usage"></a>
 
 <p>
@@ -122,6 +134,15 @@ In your browser, type this url in the navigation bar.
 ```
 http://127.0.0.1:8000/
 ```
+
+<p>
+You can quit the server by typing `CTRL-C` on your terminal
+And leave the virtual env with:
+
+```
+deactivate
+```
+</p>
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
