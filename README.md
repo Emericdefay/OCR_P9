@@ -8,7 +8,7 @@
 
 ---
 
-<p align="center"> This projet is a first approach to django, proposed by OCR.
+<p align="center"> This projet is a first approach to Django, proposed by OpenClassRoom.
     <br> 
 </p>
 
@@ -25,14 +25,14 @@
 This projet is a first approach to django.<br>
 It contains several idioms to discover:
 <ul>
-  <li>authentification</li>
+  <li>Authentification</li>
   <li>Models manipulation, union, intersection</li>
   <li>Forms manipulation</li>
-  <li>django template language with blocks, conditions, filters...</li>
-  <li>bootstrap </li>
+  <li>Django template language with blocks, conditions, filters...</li>
+  <li>Bootstrap </li>
   <li>POO surcharge</li>
-  <li>django ORM in general
-  <li>security</li>
+  <li>Django ORM in general
+  <li>Security</li>
 </ul>
 All stuff needed to create a web project.
 </p>
@@ -104,9 +104,9 @@ python manage.py runserver
 
 ### Done!
 <p>
-Now the next time you want to run the local server <br>
-Launch the terminal from your folder created at step 1<br>
-<strong>Then repeat the step 3</strong> and launch:</p>
+Now the next time you'll want to run the local server <br>
+launch the terminal from your folder created at step 1.<br>
+Then <strong>repeat the step 3</strong> and launch:</p>
 
 ```
 python OCR_P9/LITReview/manage.py runserver
@@ -118,16 +118,18 @@ python OCR_P9/LITReview/manage.py runserver
 You can know discover <a href="http://127.0.0.1:8000/">your django localversion</a>!<br>
 In your browser, type this url in the navigation bar.
 </p>
+
 ```
 http://127.0.0.1:8000/
 ```
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
-- [sqlite3](https://www.sqlite.org/index.html) - Database
 - [Django](https://www.djangoproject.com/) - Web Framework
-- [Bootstrap](https://getbootstrap.com/) - Toolkit
+- [Bootstrap](https://getbootstrap.com/) - Toolkit CSS/HTML
+- [SQLite3](https://www.sqlite.org/index.html) - Database
 
 ## ✍️ Authors <a name = "authors"></a>
 
 - [@emericdefay](https://github.com/emericdefay) - Author of the solution.
+- [@OpenClassRoom](https://openclassrooms.com/) - Learning plateform.
