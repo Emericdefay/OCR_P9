@@ -45,43 +45,74 @@ All stuff needed to create a web project.
 
 <p>
 First, you have to ensure that your python version is <strong>3.6</strong> or higher.<br>
-For more informations, check the <a href="#built-using">Built Using section</a>.
+For more informations, check the <a href="#built_using">Built Using section</a>.
 </p>
 
-### 
+### Setup our environment
 
-git clone
+#### Step 1.
+Create a new folder and execute this command from it.
+It clones the git project in your folder.
 
 ```
-cmd
+git clone https://github.com/Emericdefay/OCR_P9.git
 ```
-
-create env
+#### Step 2.
+Create a virtuel environment with venv.
 
 ```
 python -m venv env
 ```
+#### Step 3.
+Start your environment.
 
-start env
-
-```
-cmd
-```
-
-install req
+On windows:
 
 ```
-cmd
+env\Scripts\activate.bat
 ```
 
+On linux:
+
+```
+source env\Scripts\activate
+```
+#### Step 4.
+Go to the root of the project.
+
+```
+cd OCR_P9/
+```
+#### Step 5.
+Install requirements
+
+```
+pip install -r requirements.txt
+```
+#### Step 6.
+Go inside the project
+
+```
+cd LITReview/
+```
+#### Step 7.
 start env next time
 
 ```
-cmd
+python manage.py runserver
 ```
 
-### Installing
+### Done!
+<p>
+Now the next time you want to run the local server <br>
+Launch the terminal from your folder created at step 1<br>
+<strong>Then repeat the step 3</strong> and launch:</p>
 
+```
+python OCR_P9/LITReview/manage.py runserver
+```
+
+## 🎈 Usage <a name="usage"></a>
 
 django runserver
 
@@ -89,17 +120,11 @@ django runserver
 cmd
 ```
 
-
 if port already taken, 8080
 
 ```
 cmd
 ```
-
-
-## 🎈 Usage <a name="usage"></a>
-
-Add notes about how to use the system.
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
