@@ -22,15 +22,24 @@ def ask_review(request):
         return redirect("/login")
     else:
         if request.method == "POST":
-            form = CreateTicket(request.POST or None)
+            form = CreateTicket(request.POST, request.FILES)
             if form.is_valid():
                 stitle = form.cleaned_data["title"]
                 sdescription = form.cleaned_data["description"]
-                # simage = form.cleaned_data["image"]
+                
+                try: 
+                    simage = request.FILES["image"]
+                except KeyError:
+                    simage = None
+
                 suser = request.user
-                data = Ticket(title=stitle,
-                              description=sdescription,
-                              user=suser)
+                data = Ticket(
+                                title=stitle,
+                                description=sdescription,
+                                user=suser,
+                                image= simage
+                              )
+
                 data.save()
                 return redirect("/posts/")
             else:

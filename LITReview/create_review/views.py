@@ -61,17 +61,23 @@ def create_review(request, id_ticket=None):
                             "create_review/create_review.html",
                             {"form": form, "ticket": ticket})
             elif request.method == "POST":
-                ticket_form = CreateTicket(request.POST)
+                ticket_form = CreateTicket(request.POST, request.FILES)
                 review_form = CreateReview(request.POST)
                 if ticket_form.is_valid() and review_form.is_valid():
                     # Ticket creation
                     stitle = ticket_form.cleaned_data["title"]
                     sdescription = ticket_form.cleaned_data["description"]
-                    # simage = ticket_form.cleaned_data["image"]
+
+                    try:
+                        simage = request.FILES["image"]
+                    except KeyError:
+                        simage = None
+                        
                     suser = request.user
                     data_ticket = Ticket(
                                         title=stitle,
                                         description=sdescription,
+                                        image=simage,
                                         user=suser)
                     data_ticket.save()
                     # Review creation
@@ -89,3 +95,5 @@ def create_review(request, id_ticket=None):
                     data_review.save()
 
                     return redirect("/posts")
+                else:
+                    return redirect("/flow")

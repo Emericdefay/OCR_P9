@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 urlpatterns = [
@@ -31,4 +33,4 @@ urlpatterns = [
     path("create/<int:id_ticket>/", include("create_review.urls")),
     path("modify/<str:content>/<int:id_modify>/", include("modify.urls")),
     path("delete/<str:content>/<int:id_delete>/", include("delete.urls")),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

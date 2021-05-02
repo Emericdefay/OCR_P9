@@ -24,7 +24,11 @@
                             <div class="position-absolute top-0 end-0 p-2">{{ post.time_created|date:"DATETIME_FORMAT" }}</div>
                             <h3>{{ post.title }}</h3>
                             {{ post.description }}
-
+                            {% if post.image %}
+                                <div class="p-3">
+                                    <img src={{ post.image.url }}></i>
+                                </div>
+                            {% endif %}
                             {% if post.user == request.user %}
                                 <div class="position-absolute bottom-0 end-0 p-2">
                                     <a href="/modify/ticket/{{ post.id }}" class="btn btn-primary">Modifier</a>
@@ -75,6 +79,11 @@
                                         <div class="position-absolute top-0 end-0 p-2">{{ post.ticket.time_created }}</div>
                                         <h3>{{ post.ticket.title }}</h3>
                                         {{ post.ticket.description }}
+                                        {% if post.ticket.image %}
+                                            <div class="p-3">
+                                                <img src={{ post.ticket.image.url }}></i>
+                                            </div>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>

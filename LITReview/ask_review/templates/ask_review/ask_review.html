@@ -5,7 +5,7 @@
     <div class="d-flex justify-content-center">
         <div class="">
             <h2 class="text-center py-2">Créer un Ticket</h2>
-            <form method="POST" action="/ask/">
+            <form method="POST" action="/ask/" enctype="multipart/form-data">
                 {% csrf_token %}     
                 <div class="position-relative">
                     <div class="border border-secondary p-2">
@@ -14,10 +14,8 @@
                         {{ form.title }}
                         <label for="id_description" class="form-label">Description</label>
                         {{ form.description }}
-                        {% comment %} 
-                        <!-- Uncomment for image integration -->
-                            BUTTON 
-                        {% endcomment %}
+                        {{ form.image }}
+
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                             <button type="submit" class="btn btn-primary ">Envoyer</button>
                         </div>  

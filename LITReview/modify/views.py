@@ -31,10 +31,11 @@ def modify(request, content, id_modify):
                             instance=ticket,
                             initial={
                                     'title': ticket.title,
-                                    "description": ticket.description
+                                    "description": ticket.description,
+                                    "image": ticket.image
                                     })
 
-                return render(request, "modify/modify.html", {"form": form})
+                return render(request, "modify/modify.html", {"form": form, "old_image": ticket.image})
 
             elif content == "review":
                 review = Review.objects.get(
@@ -54,7 +55,8 @@ def modify(request, content, id_modify):
 
         elif request.method == "POST":
             if content == "ticket":
-                form = CreateTicket(request.POST)
+                form = CreateTicket(request.POST, request.FILES)
+
                 if form.is_valid():
                     Ticket.objects.filter(
                         Q(id=id_modify) & Q(user=request.user)).update(
@@ -63,6 +65,22 @@ def modify(request, content, id_modify):
                     Ticket.objects.filter(
                         Q(id=id_modify) & Q(user=request.user)).update(
                             description=form.cleaned_data["description"])
+
+                    Ticket.objects.get(id=id_modify).delete()
+                    
+
+                    stitle = form.cleaned_data["title"]
+                    sdescription = form.cleaned_data["description"]
+                    simage = request.FILES["image"]
+                    suser = request.user
+                    data = Ticket(
+                                    title=stitle,
+                                    description=sdescription,
+                                    user=suser,
+                                    image= simage
+                                )
+
+                    data.save()
 
                 return redirect("/posts/")
             elif content == "review":

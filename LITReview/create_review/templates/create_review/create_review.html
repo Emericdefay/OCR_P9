@@ -4,7 +4,7 @@
 {% block content %}
     création de critique
     
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="p-5">
                 <div class="px-5 py-2">
@@ -16,17 +16,9 @@
                                     <p>{{ ticket.user.username }} a publié un ticket</p>
                                     <div class="position-absolute top-0 end-0 p-2">{{ ticket.time_created }}</div>
                                     <h3>{{ ticket.title }}</h3>
-                                    {% comment %} 
-                                    <!-- Uncomment for image integration -->
-                                    <div class"row">
-                                        <div class="col">
-                                            {{ ticket.image }}
-                                        </div>    
-                                        <div class="col">
-                                            TICKET.DESCRIPTION GO HERE
-                                        </div>
-                                    </div> 
-                                    {% endcomment %}
+                                    {% if ticket.image %}
+                                        <img src={{ticket.image.url}}>
+                                    {% endif %}
                                     {{ ticket.description }}
                                 </div>
                             {% else %}
@@ -36,10 +28,7 @@
                                 {{ ticket.title }}
                                 <label for="id_description" class="form-label">Description</label>
                                 {{ ticket.description }}
-                                {% comment %} 
-                                <!-- Uncomment for image integration -->
-                                 BUTTON 
-                                {% endcomment %}
+                                {{ ticket.image }}
                             {% endif %}
                         </div>
                     </div>
