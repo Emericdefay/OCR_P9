@@ -4,10 +4,10 @@
 {% block content %}
     <div class="d-flex justify-content-center">
         <div class="">
-            <h2>Créer un Ticket</h2>
+            <h2 class="text-center py-2">Créer un Ticket</h2>
             <form method="POST" action="/ask/">
-                <div class="p-5">
-                    <div class="px-5 py-2">
+                <div class="">
+                    <div class="px-5">
                         <div class="position-relative">
                             {% csrf_token %}
                             <div>
@@ -20,6 +20,9 @@
                                 {{ form.description }}
                             </div>
                         </div>
+                    {% comment %}
+                    image button
+                    {% endcomment %}
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                         <button type="submit" class="btn btn-primary ">Envoyer</button>
                     </div>

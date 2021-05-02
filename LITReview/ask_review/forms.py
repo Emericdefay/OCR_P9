@@ -4,26 +4,26 @@ from .models import Ticket
 
 
 class CreateTicket(forms.ModelForm):
-    """[summary]
+    """Form to create a ticket
 
     Args:
-        forms ([type]): [description]
+        forms ([module]): Form's fields collection.
     """
     title = forms.CharField(min_length=2)
     description = forms.CharField(widget=forms.Textarea)
     # image = forms.ImageField()
+    
     class Meta:
-        """[summary]
+        """Allow edition of fields mentionned.
         """
         model = Ticket
         fields = ["title", "description"]
 
     def __init__(self, *args, **kwargs):
-        """[summary]
+        """Allow edition of fields mentionned.
         """
         super(CreateTicket, self).__init__(*args, **kwargs)
         self.fields['description'].widget.attrs['style'] = "width:100%; height: 100%;"
-        # self.fields['description'].widget.attrs['rows'] = 10
         self.fields['title'].widget.attrs['style'] = "width:100%; height: 100%;"
-        # self.fields['title'].widget.attrs['rows'] = 1
+        # self.fields['image'].widget.attrs['style'] = "width:100%; height: 100%;"
 

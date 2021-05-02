@@ -4,15 +4,18 @@ from .forms import CreateTicket
 from .models import Ticket
 
 
-# Create your views here.
 def ask_review(request):
-    """[summary]
+    """Allow user to create a ticket.
 
     Args:
-        request ([type]): [description]
+        request ([HttpRequest]): instance of HttpRequest
 
     Returns:
-        [type]: [description]
+        [render]: Render the page.
+            request: HttpRequest
+            template: The template needed to be show : ./templates/ask_review/ask_review.html
+            context: context called in template
+        [redirect]: Redirect to the appropriate page.
     """
     if not request.user.is_authenticated:
         return redirect("/login")
@@ -22,6 +25,7 @@ def ask_review(request):
             if form.is_valid():
                 stitle = form.cleaned_data["title"]
                 sdescription = form.cleaned_data["description"]
+                # simage = form.cleaned_data["image"]
                 suser = request.user
                 data = Ticket(title=stitle,
                               description=sdescription,

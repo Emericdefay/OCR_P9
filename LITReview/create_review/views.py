@@ -10,14 +10,18 @@ from .forms import CreateReview
 
 
 def create_review(request, id_ticket=None):
-    """[summary]
+    """Create a review with or without ticket linked.
 
     Args:
-        request ([type]): [description]
-        id_ticket ([type]): [description]
+        request ([HttpRequest]): instance of HttpRequest
+        id_ticket (int): id of the ticket linked if linked to one.
 
     Returns:
-        [type]: [description]
+        [render]: Render the page.
+            request: HttpRequest
+            template: The template needed to be show : ./templates/create_review/create_review.html
+            context: context called in template
+        [redirect]: Redirect to the appropriate page.
     """
     if not request.user.is_authenticated:
         return redirect("/login")
@@ -56,6 +60,7 @@ def create_review(request, id_ticket=None):
                     # Ticket creation
                     stitle = ticket_form.cleaned_data["title"]
                     sdescription = ticket_form.cleaned_data["description"]
+                    # simage = ticket_form.cleaned_data["image"]
                     suser = request.user
                     data_ticket = Ticket(title=stitle,
                                 description=sdescription,
@@ -75,13 +80,3 @@ def create_review(request, id_ticket=None):
                     data_review.save()
 
                     return redirect("/posts")
-
-
-"""
-    ticket = models.ForeignKey(Ticket, on_delete=models.CASCADE)
-    rating = models.PositiveSmallIntegerField(validators=[MinValueValidator(0), MaxValueValidator(5)])
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    headline = models.CharField(max_length=128)
-    body = models.TextField(max_length=8192, blank=True)
-    time_created = models.DateTimeField(auto_now_add=True)
-"""
