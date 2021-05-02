@@ -126,6 +126,7 @@ flake8 OCR_P9\LITReview
 
 ## 🎈 Usage <a name="usage"></a>
 
+#### Server ready!
 <p>
 You can know discover <a href="http://127.0.0.1:8000/">your django localversion</a>!<br>
 In your browser, type this url in the navigation bar.
@@ -134,7 +135,19 @@ In your browser, type this url in the navigation bar.
 ```
 http://127.0.0.1:8000/
 ```
+#### Database
+<p>
+The database sqlite3 already has a couple of accounts with tickets and reviews.<br>
+You can then see some examples.
+  <ul>
+    <li>user1</li>
+    <li>user2</li>
+    <li>user3</li>
+  </ul>
+  To make things simple, they all have the same password : `Motdepasse123`.
+</p>
 
+#### Exit server
 <p>
 You can quit the server by typing `CTRL-C` on your terminal
 And leave the virtual env with:

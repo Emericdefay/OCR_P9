@@ -35,8 +35,8 @@ def follow(request):
 
         if request.method == "POST":
             form = FollowSomeone(request.POST)
-            different_user = form.cleaned_data["user"] != request.user.username
-            if form.is_valid() and different_user:
+            oneself = request.user.username
+            if form.is_valid() and (form.cleaned_data["user"] != oneself):
                 try:
                     user_followed = User.objects.get(
                                         username=form.cleaned_data["user"])
