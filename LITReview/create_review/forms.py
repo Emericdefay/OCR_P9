@@ -10,13 +10,13 @@ class CreateReview(forms.ModelForm):
         forms ([module]): Form's fields collection.
     """
     headline = forms.CharField()
-    body = forms.CharField(widget=forms.Textarea)
+    body = forms.CharField(widget=forms.Textarea, required=False)
     rating = forms.IntegerField(widget=forms.RadioSelect(choices=(
-                                                                (1, "1"),
-                                                                (2, "2"),
-                                                                (3, "3"),
-                                                                (4, "4"),
-                                                                (5, "5"))))
+                                                                (1, "- 1"),
+                                                                (2, "- 2"),
+                                                                (3, "- 3"),
+                                                                (4, "- 4"),
+                                                                (5, "- 5"))))
 
     class Meta:
         """Allow edition of fields mentionned.

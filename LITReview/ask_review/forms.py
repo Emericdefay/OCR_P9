@@ -10,7 +10,7 @@ class CreateTicket(forms.ModelForm):
         forms ([module]): Form's fields collection.
     """
     title = forms.CharField(min_length=2)
-    description = forms.CharField(widget=forms.Textarea)
+    description = forms.CharField(widget=forms.Textarea, required=False)
     image = forms.ImageField(
                             label="Télécharger une image",
                             required=False,
