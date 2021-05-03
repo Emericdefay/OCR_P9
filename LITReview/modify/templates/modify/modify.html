@@ -5,6 +5,7 @@
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="p-5">
+            <p class="text-center">Modifier votre critique</p>
             <div class="position-relative"> 
                 <div class="border border-secondary px-2 pb-5 pt-2">
                     {% if ticket %}
@@ -20,7 +21,7 @@
                             </div>
                         {% endif %}
                     </div>
-                    <div class="border border-secondary px-2 pb-5 pt-2">
+                    <div class="border border-white  pb-5 pt-2">
                         Critique
                         <div class="p-3">
                             <div class="p-3">
@@ -44,8 +45,8 @@
                         </div>
                     </div>
                     {% else %}
-                        <div class="border border-secondary px-2 pb-5 pt-2">
-                        Modifier votre ticket
+                        <div class="border border-white px-2 pb-5 pt-2">
+                        <p class="text-center">Modifier votre ticket</p>
                             <div class="p-3">
                                 <div class="p-3">
                                     <label for="id_healine" class="form-label">Titre</label>
@@ -65,7 +66,7 @@
                         </div>
                     {% endif %}
 
-                <div class="position-absolute bottom-0 end-0 p-2">
+                <div class="position-absolute bottom-0 end-0 p-5">
                     <button type="submit" class="btn btn-primary">Envoyer</button>
                 </div>
             </div>

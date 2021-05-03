@@ -2,8 +2,6 @@
 
 <!-- content -->
 {% block content %}
-    création de critique
-    
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="p-5">
@@ -14,21 +12,25 @@
                                 Vous êtes en train de poster en réponse à
                                 <div class="border border-secondary p-2">
                                     <p>{{ ticket.user.username }} a publié un ticket</p>
-                                    <div class="position-absolute top-0 end-0 p-2">{{ ticket.time_created }}</div>
+                                    <div class="position-absolute top-0 end-0 p-5">{{ ticket.time_created }}</div>
                                     <h3>{{ ticket.title }}</h3>
-                                    {% if ticket.image %}
-                                        <img src={{ticket.image.url}}>
-                                    {% endif %}
                                     {{ ticket.description }}
+                                    {% if ticket.image %}
+                                        <div class="p-3">
+                                            <img src={{ticket.image.url}}>
+                                        </div>
+                                    {% endif %}
                                 </div>
                             {% else %}
                                 <p>Livre / Article</p>
-                                <div class="position-absolute top-0 end-0 p-2">{{ ticket.time_created }}</div>
                                 <label for="id_title" class="form-label">Titre</label>
                                 {{ ticket.title }}
                                 <label for="id_description" class="form-label">Description</label>
                                 {{ ticket.description }}
-                                {{ ticket.image }}
+                                <label for="id_image" class="form-label">Image</label>
+                                <div class="pb-4 px-2">
+                                    {{ ticket.image }}
+                                </div>
                             {% endif %}
                         </div>
                     </div>

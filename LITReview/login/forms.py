@@ -12,3 +12,8 @@ class PlaceholderAuthForm(AuthenticationForm):
         attrs={'placeholder': "Nom d'utilisateur"}))
     password = forms.CharField(widget=forms.PasswordInput(
         attrs={"placeholder": "Mot de passe"}))
+
+    def __init__(self, *args, **kwargs):
+        super(PlaceholderAuthForm, self).__init__(*args, **kwargs)
+        self.fields["username"].widget.attrs["style"] = "width: 80%;"
+        self.fields["password"].widget.attrs["style"] = "width: 80%;"

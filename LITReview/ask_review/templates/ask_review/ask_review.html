@@ -8,14 +8,17 @@
             <form method="POST" action="/ask/" enctype="multipart/form-data">
                 {% csrf_token %}     
                 <div class="position-relative">
-                    <div class="border border-secondary p-2">
+                    <div class="border border-white p-2">
+
                         <div class="position-absolute top-0 end-0 p-2">{{ ticket.time_created }}</div>
                         <label for="id_title" class="form-label">Titre</label>
                         {{ form.title }}
                         <label for="id_description" class="form-label">Description</label>
                         {{ form.description }}
-                        {{ form.image }}
-
+                        <label for="id_image" class="form-label">Image</label>
+                        <div>
+                            {{ form.image }}
+                        </div>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                             <button type="submit" class="btn btn-primary ">Envoyer</button>
                         </div>  
