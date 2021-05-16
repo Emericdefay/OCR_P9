@@ -10,7 +10,7 @@
     <form method="get">
         {% for post in data %}
             {% comment %} ticket {% endcomment %}
-            {% if post.title %}
+            {% if post.headline is None %}
                 <div class="px-5 py-2">
                     <div class="position-relative">
                         <div class="border border-secondary p-2">

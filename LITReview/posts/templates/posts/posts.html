@@ -5,7 +5,7 @@
         {% for post in data %}
 
             {% comment %} ticket {% endcomment %}
-            {% if post.title %}
+            {% if post.headline is None %}
                 <div class="p-5">
                     <div class="position-relative">
                         <div class="border border-secondary p-2">
@@ -44,9 +44,9 @@
                         <div class="border border-secondary p-2">
 
                             {% if post.user.username == user.username %}
-                                <p>Vous avez demandé une critique</p>
+                                <p>Vous avez publié une critique</p>
                             {% else %}
-                                <p>{{ post.user.username }} a demandé une critique</p>
+                                <p>{{ post.user.username }} a publié une critique</p>
                             {% endif %}
 
                             <div class="position-absolute top-0 end-0 p-2">{{ post.time_created }}</div>

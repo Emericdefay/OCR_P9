@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.db.models import Q
+from django.core.files.storage import default_storage
 
 from ask_review.models import Ticket
 from ask_review.forms import CreateTicket
@@ -25,36 +26,36 @@ def modify(request, content, id_modify):
         if request.method == "GET":
             if content == "ticket":
                 ticket = Ticket.objects.get(
-                            Q(id=id_modify) & Q(user=request.user))
+                    Q(id=id_modify) & Q(user=request.user))
 
                 form = CreateTicket(
-                            instance=ticket,
-                            initial={
-                                    'title': ticket.title,
-                                    "description": ticket.description,
-                                    "image": ticket.image
-                                    })
+                    instance=ticket,
+                    initial={
+                        'title': ticket.title,
+                        "description": ticket.description,
+                        "image": ticket.image
+                    })
 
                 return render(
-                            request,
-                            "modify/modify.html",
-                            {"form": form, "old_image": ticket.image})
+                    request,
+                    "modify/modify.html",
+                    {"form": form, "old_image": ticket.image})
 
             elif content == "review":
                 review = Review.objects.get(
-                            Q(id=id_modify) & Q(user=request.user))
+                    Q(id=id_modify) & Q(user=request.user))
 
                 form = CreateReview(
-                            instance=review,
-                            initial={
-                                'headline': review.headline,
-                                "rating": review.rating,
-                                "body": review.body})
+                    instance=review,
+                    initial={
+                        'headline': review.headline,
+                        "rating": review.rating,
+                        "body": review.body})
 
                 return render(
-                            request,
-                            "modify/modify.html",
-                            {"form": form, "ticket": review.ticket})
+                    request,
+                    "modify/modify.html",
+                    {"form": form, "ticket": review.ticket})
 
         elif request.method == "POST":
             if content == "ticket":
@@ -69,22 +70,23 @@ def modify(request, content, id_modify):
                         Q(id=id_modify) & Q(user=request.user)).update(
                             description=form.cleaned_data["description"])
 
-                    Ticket.objects.get(id=id_modify).delete()
+                    if request.FILES:
+                        stest = request.FILES["image"]
+                        simage = default_storage.save(stest.name, stest)
+                    else:
+                        stest = Ticket.objects.get(id=id_modify).image
+                        simage = stest
 
-                    stitle = form.cleaned_data["title"]
-                    sdescription = form.cleaned_data["description"]
-                    simage = request.FILES["image"]
-                    suser = request.user
-                    data = Ticket(
-                                    title=stitle,
-                                    description=sdescription,
-                                    user=suser,
-                                    image=simage
-                                )
+                    Ticket.objects.filter(
+                        Q(id=id_modify) & Q(user=request.user)).update(
+                            image=simage)
 
-                    data.save()
+                    # Optionnal
+                    Review.objects.filter(ticket__id__in=Ticket.objects.filter(
+                        id=id_modify).values_list("id")).delete()
 
                 return redirect("/posts/")
+
             elif content == "review":
                 form = CreateReview(request.POST)
                 if form.is_valid():
